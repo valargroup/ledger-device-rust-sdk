@@ -287,9 +287,12 @@ impl Comm {
         if !self.skip_rx_on_send
             && !(cfg!(all(
                 feature = "fast_usb_reply",
-                any(target_os = "flex", target_os = "stax", target_os = "nanosplus")
-            ))
-                && self.apdu_type == seph::PacketTypes::PacketTypeUsbHidApdu as u8)
+                any(
+                    target_os = "flex",
+                    target_os = "stax",
+                    target_os = "nanosplus"
+                )
+            )) && self.apdu_type == seph::PacketTypes::PacketTypeUsbHidApdu as u8)
         {
             let mut buffer: [u8; 273] = [0; 273];
             let status = sys_seph::io_rx(&mut buffer, false);
