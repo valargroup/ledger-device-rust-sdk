@@ -39,6 +39,8 @@ heap = [ "ledger_secure_sdk_sys/heap" ]
 nano_nbgl = [ "ledger_secure_sdk_sys/nano_nbgl" ]
 debug_csdk = [ "ledger_secure_sdk_sys/debug_csdk" ]
 io_new = []  # switch to new 'io' module
+# Skip the pre-reply receive for Flex USB in legacy I/O.
+fast_usb_reply = []
 stack_usage = []
 mlkem = [ "ledger_secure_sdk_sys/mlkem" ]
 mldsa = [ "ledger_secure_sdk_sys/mldsa" ]

@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+- Opt-in `fast_usb_reply` feature to skip the pre-reply receive wait on Flex USB
+  in legacy I/O, retaining receive-loop UX handling and the in-progress guard.
+
 ## [1.37.0] - 2026-08-24
 
 ### Added

@@ -282,7 +282,12 @@ impl Comm {
             target_os = "apex_p",
             feature = "nano_nbgl"
         ))]
-        if !self.skip_rx_on_send {
+        // Flex USB can reply immediately and service UX events in the receive loop.
+        // Other targets and transports retain the existing pre-reply receive.
+        if !self.skip_rx_on_send
+            && !(cfg!(all(feature = "fast_usb_reply", target_os = "flex"))
+                && self.apdu_type == seph::PacketTypes::PacketTypeUsbHidApdu as u8)
+        {
             let mut buffer: [u8; 273] = [0; 273];
             let status = sys_seph::io_rx(&mut buffer, false);
             if status > 0 {

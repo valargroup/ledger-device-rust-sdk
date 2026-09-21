@@ -88,6 +88,14 @@ cargo build --release --target=flex        # Flex
 cargo build --release --target=apex_p      # Apex P
 ```
 
+### Immediate Flex USB replies
+
+Enable `ledger_device_sdk/fast_usb_reply` to skip the receive wait immediately
+before a legacy I/O reply on Flex USB HID. The receive loop continues servicing
+UX events, and the in-progress command guard still rejects overlapping APDUs.
+The feature is disabled by default and does not affect `io_new`, other devices,
+or other transports.
+
 ### App metadata and build variants
 
 `cargo-ledger` and the SDK build script read your app's install parameters
