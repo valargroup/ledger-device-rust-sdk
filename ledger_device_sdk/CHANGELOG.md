@@ -8,8 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Opt-in `fast_usb_reply` feature to skip the pre-reply receive wait on Flex USB
-  in legacy I/O, retaining receive-loop UX handling and the in-progress guard.
+- Opt-in `fast_usb_reply` feature to skip the legacy USB HID pre-reply receive
+  wait on Flex, Stax and Nano S Plus with NBGL, retaining receive-loop UX handling
+  and the in-progress guard.
 
 ## [1.37.0] - 2026-08-24
 

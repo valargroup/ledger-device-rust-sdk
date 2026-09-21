@@ -88,13 +88,18 @@ cargo build --release --target=flex        # Flex
 cargo build --release --target=apex_p      # Apex P
 ```
 
-### Immediate Flex USB replies
+### Immediate USB replies
 
 Enable `ledger_device_sdk/fast_usb_reply` to skip the receive wait immediately
-before a legacy I/O reply on Flex USB HID. The receive loop continues servicing
-UX events, and the in-progress command guard still rejects overlapping APDUs.
+before a legacy I/O USB HID reply on Flex, Stax and Nano S Plus. Nano S Plus
+uses this wait only with `nano_nbgl`; without it there is no wait to skip.
+The receive loop continues servicing UX events, and the in-progress command
+guard still rejects overlapping APDUs.
 The feature is disabled by default and does not affect `io_new`, other devices,
 or other transports.
+
+Physical timing and lock/reconnect recovery have been validated on Flex.
+Stax and Nano S Plus hardware validation is pending.
 
 ### App metadata and build variants
 

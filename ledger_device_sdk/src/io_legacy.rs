@@ -282,10 +282,13 @@ impl Comm {
             target_os = "apex_p",
             feature = "nano_nbgl"
         ))]
-        // Flex USB can reply immediately and service UX events in the receive loop.
+        // Opted-in USB HID targets service UX events in the receive loop.
         // Other targets and transports retain the existing pre-reply receive.
         if !self.skip_rx_on_send
-            && !(cfg!(all(feature = "fast_usb_reply", target_os = "flex"))
+            && !(cfg!(all(
+                feature = "fast_usb_reply",
+                any(target_os = "flex", target_os = "stax", target_os = "nanosplus")
+            ))
                 && self.apdu_type == seph::PacketTypes::PacketTypeUsbHidApdu as u8)
         {
             let mut buffer: [u8; 273] = [0; 273];

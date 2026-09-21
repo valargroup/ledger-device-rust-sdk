@@ -39,7 +39,7 @@ heap = [ "ledger_secure_sdk_sys/heap" ]
 nano_nbgl = [ "ledger_secure_sdk_sys/nano_nbgl" ]
 debug_csdk = [ "ledger_secure_sdk_sys/debug_csdk" ]
 io_new = []  # switch to new 'io' module
-# Skip the pre-reply receive for Flex USB in legacy I/O.
+# Skip the legacy USB HID pre-reply receive on Flex, Stax and Nano S+ with NBGL.
 fast_usb_reply = []
 stack_usage = []
 mlkem = [ "ledger_secure_sdk_sys/mlkem" ]
