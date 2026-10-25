@@ -27,7 +27,7 @@ jobs:
         target: ["nanox", "nanosplus", "stax", "flex", "apex_p"]
     steps:
       - name: Clone
-        uses: actions/checkout@v6
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           # While a nightly bump is in preparation, point the canary at the
           # prep branch via the NIGHTLY_PREP_REF repo variable (see NIGHTLY.md

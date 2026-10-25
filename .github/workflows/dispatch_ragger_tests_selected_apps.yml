@@ -60,9 +60,9 @@ jobs:
       run_for_devices: ${{ steps.matrix.outputs.run_for_devices }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: '3.x'
       - name: Install ledgered
@@ -93,14 +93,14 @@ jobs:
         run: pip install ledgered --break-system-packages
 
       - name: Clone Rust SDK branch
-        uses: actions/checkout@v6
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           repository: LedgerHQ/ledger-device-rust-sdk
           ref: ${{ inputs.rust_sdk_branch }}
           path: sdk
 
       - name: Clone app
-        uses: actions/checkout@v6
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           repository: LedgerHQ/${{ matrix.entry.app }}
           ref: ${{ matrix.entry.ref }}
@@ -178,7 +178,7 @@ jobs:
         run: ls -1 "${{ steps.build.outputs.binary_path }}"
 
       - name: Upload app binary
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
           # Per-device suffix keeps parallel uploads unique; merged below. The
           # '~' separator avoids one app's merge pattern (`<artifact>~*`) also
@@ -197,7 +197,7 @@ jobs:
         app: ${{ fromJSON(needs.prepare.outputs.apps_matrix) }}
     steps:
       - name: Merge per-device artifacts into a single app artifact
-        uses: actions/upload-artifact/merge@v6
+        uses: actions/upload-artifact/merge@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
           name: ${{ matrix.app.artifact }}
           pattern: ${{ matrix.app.artifact }}~*
@@ -210,7 +210,7 @@ jobs:
       fail-fast: false
       matrix:
         app: ${{ fromJSON(needs.prepare.outputs.apps_matrix) }}
-    uses: LedgerHQ/ledger-app-workflows/.github/workflows/reusable_ragger_tests.yml@v1
+    uses: LedgerHQ/ledger-app-workflows/.github/workflows/reusable_ragger_tests.yml@f5e0e2c2cbd05ee2fc42187b3b3bb346778abc4d # v1
     with:
       app_repository: LedgerHQ/${{ matrix.app.name }}
       app_branch_name: ${{ matrix.app.ref }}

@@ -19,12 +19,12 @@ jobs:
         target: ["nanox", "nanosplus", "stax", "flex", "apex_p"]
     steps:
       - name: Checkout C BP
-        uses: actions/checkout@v6
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           repository: LedgerHQ/app-boilerplate
           path: c_boilerplate
       - name: Checkout C SDK Build Parameters Extractor
-        uses: actions/checkout@v6
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           repository: LedgerHQ/csdk_build_parameters_extractor
           path: c_sdk_build_params_x
